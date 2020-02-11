@@ -15,7 +15,7 @@ namespace CSGetSysParamTaroltEljarasFW
         public static void Main(string[] args)
         {
             GetSysParamDBCap getSysParamDBCap = new GetSysParamDBCap(new System.Data.SqlClient.SqlConnection(APPLICATIOPARAMETER_ADATBAZISKAPCSOLAT));
-            getSysParamDBCap.RendszerParameterLekerdezese("Konyvtar");
+            getSysParamDBCap.RendszerParameterLekerdezese("K59verzio");
         }
 
     }

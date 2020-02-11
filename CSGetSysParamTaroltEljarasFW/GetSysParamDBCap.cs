@@ -25,20 +25,32 @@ namespace CSGetSysParamTaroltEljarasFW
         {
             string eredmeny = "";
 
-            using (SqlCommand sqlUtasitas = new SqlCommand("GetSysParam", AdatbazisKapcsolat))
+            using (SqlCommand sqlUtasitas = new SqlCommand("select dbo.GetSysParam(@sNev)", AdatbazisKapcsolat))
             {
 
                 sqlUtasitas.CommandType = CommandType.StoredProcedure;
 
+                sqlUtasitas.Parameters.AddWithValue("@sNev", rendszerParameterNeve);
+                eredmeny = (string)sqlUtasitas.ExecuteScalar();
+                
+            }
+            return eredmeny;
+
+        } // RendszerParameterLekerdezese
+
+        public string RendszerParameterLekerdezeseSql(string rendszerParameterNeve)
+        {
+            string eredmeny = "";
+            string sql = "select dbo.GetSysParam(@sNev)";
+            using (SqlCommand sqlUtasitas = new SqlCommand(sql, AdatbazisKapcsolat))
+            {
+
+                //sqlUtasitas.CommandType = CommandType.StoredProcedure;
+
                 sqlUtasitas.Parameters.Add("@sNev", SqlDbType.VarChar).Value = rendszerParameterNeve;
+                sqlUtasitas.ExecuteNonQuery();
+                eredmeny = (string)sqlUtasitas.Parameters["@sNev"].Value;
 
-                SqlDataReader reader = sqlUtasitas.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    eredmeny = (string)sqlUtasitas.Parameters["@sNev"].Value;
-                }
-                reader.Close();
             }
             return eredmeny;
 

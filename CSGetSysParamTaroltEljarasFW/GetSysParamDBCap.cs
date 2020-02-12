@@ -25,35 +25,27 @@ namespace CSGetSysParamTaroltEljarasFW
         {
             string eredmeny = "";
 
-            using (SqlCommand sqlUtasitas = new SqlCommand("select dbo.GetSysParam(@sNev)", AdatbazisKapcsolat))
+            using (SqlCommand sqlUtasitas = new SqlCommand("SELECT dbo.GetSysParam(@sNev)", AdatbazisKapcsolat))
             {
 
-                sqlUtasitas.CommandType = CommandType.StoredProcedure;
+                sqlUtasitas.CommandType = CommandType.Text;
 
-                sqlUtasitas.Parameters.AddWithValue("@sNev", rendszerParameterNeve);
-                eredmeny = (string)sqlUtasitas.ExecuteScalar();
+                sqlUtasitas.Parameters.Add("@sNev", SqlDbType.VarChar).Value = rendszerParameterNeve;
+
+                SqlDataReader olvaso = sqlUtasitas.ExecuteReader();
+
+                if (olvaso.HasRows)
+                {
+                    while (olvaso.Read())
+                    {
+                        eredmeny = olvaso.GetString(0);
+                    }
+                }
                 
             }
             return eredmeny;
 
         } // RendszerParameterLekerdezese
-
-        public string RendszerParameterLekerdezeseSql(string rendszerParameterNeve)
-        {
-            string eredmeny = "";
-            string sql = "select dbo.GetSysParam(@sNev)";
-            using (SqlCommand sqlUtasitas = new SqlCommand(sql, AdatbazisKapcsolat))
-            {
-
-                //sqlUtasitas.CommandType = CommandType.StoredProcedure;
-
-                sqlUtasitas.Parameters.Add("@sNev", SqlDbType.VarChar).Value = rendszerParameterNeve;
-                sqlUtasitas.ExecuteNonQuery();
-                eredmeny = (string)sqlUtasitas.Parameters["@sNev"].Value;
-
-            }
-            return eredmeny;
-
-        } // RendszerParameterLekerdezese
+        
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BC331CA3-9A94-4A85-AC86-26D3650A9684}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSGetSysParamTaroltEljarasFW</RootNamespace>
     <AssemblyName>CSGetSysParamTaroltEljarasFW</AssemblyName>

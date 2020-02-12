@@ -64,8 +64,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetSysParamDBCap.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GetSysParamAdatbazisSapka.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

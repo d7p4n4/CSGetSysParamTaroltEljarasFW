@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CSGetSysParamTaroltEljarasFW
 {
-    public class GetSysParamAdatbazisSapka
+    public class GetSysParamTaroltEljarasSapka
     {
 
         private SqlConnection AdatbazisKapcsolat { get; set; }
 
-        public GetSysParamAdatbazisSapka() { }
+        public GetSysParamTaroltEljarasSapka() { }
 
-        public GetSysParamAdatbazisSapka(SqlConnection connection)
+        public GetSysParamTaroltEljarasSapka(SqlConnection connection)
         {
             AdatbazisKapcsolat = connection;
             AdatbazisKapcsolat.Open();

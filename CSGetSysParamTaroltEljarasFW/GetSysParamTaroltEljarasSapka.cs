@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSGetSysParamTaroltEljarasFW
 {
-    public class GetSysParamTaroltEljarasSapka
+    public class GetSysParamTaroltEljarasSapka 
     {
 
         private SqlConnection AdatbazisKapcsolat { get; set; }
